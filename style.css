@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+    height: 100vh;
+    font-family: system-ui, Roboto, sans-serif;
+}
+
+.main-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    box-shadow: 0 5px 5px #9d9d9d;
+    padding: 1rem;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    grid-template-rows: 18rem;
+    grid-auto-rows: 18rem;
+    gap: 1rem;
+    flex-grow: 1;
+    background: seagreen;
+}
+
+.cards-container .card {
+    border: 1px solid black;
+}
+
+.add-btn-container {
+    display: flex;
+    padding: 1rem;
+    background: violet;
+    justify-content: center;
+    align-items: center;
+}
