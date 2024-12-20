@@ -12,21 +12,34 @@
         </header>
         <main class="main-container">
             <div class="add-btn-container">
-                <button>Add Book</button>
+                <button class="add-book-btn">+ Add book</button>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="book-info">
-                        <p>"Lord of the Rings"</p>
-                        <p>JRR Tolkien</p>
-                        <p>300 pages</p>
-                    </div>
-                    <div class="card-btns">
-                        <button class="read-btn">Read</button>
-                        <button class="delete-btn">Remove</button>
-                    </div>
-                </div>
             </div>
         </main>
     </body>
+    <dialog>
+        <form action="">
+            <h2>Add new book</h2>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="author">Author</label>
+                <input type="text" name="author" id="author">
+            </div>
+            <div>
+                <label for="pages">Pages</label>
+                <input type="number" name="pages" id="pages">
+            </div>
+            <div>
+                <label for="checkbox">Have you read it?</label>
+                <input type="checkbox" name="checkbox" id="checkbox">
+            </div>
+            <div class="submit">
+                <button>Submit</button>
+            </div>
+        </form>
+    </dialog>
 </html>
