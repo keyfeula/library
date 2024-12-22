@@ -2,7 +2,7 @@ const myLibrary = [];
 const cardsContainer = document.querySelector(".cards-container");
 const dialog = document.querySelector("dialog");
 const addBookBtn = document.querySelector(".add-book-btn");
-const body = document.querySelector("body");
+const closeBtn = document.querySelector(".close-btn");
 
 function Book(title, author, pages, readStatus) {
     this.title = title;
@@ -72,15 +72,11 @@ function createBookCard(book) {
 }
 
 addBookBtn.addEventListener("click", () => {
-        dialog.showModal();
-    }
-);
+    dialog.showModal();
+});
 
-body.addEventListener("click", () => {
-    if (dialog.open) {
-        dialog.close();
-    }
-}
-);
+closeBtn.addEventListener("click", () => {
+    dialog.close();
+});
 
 displayBooks(myLibrary);
