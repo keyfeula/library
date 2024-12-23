@@ -3,6 +3,11 @@ const cardsContainer = document.querySelector(".cards-container");
 const dialog = document.querySelector("dialog");
 const addBookBtn = document.querySelector(".add-book-btn");
 const closeBtn = document.querySelector(".close-btn");
+const submitBtn = document.querySelector(".submit-btn");
+const titleInput = document.querySelector("input#title");
+const authorInput = document.querySelector("input#author");
+const pagesInput = document.querySelector("input#pages");
+const readInput = document.querySelector("input#checkbox");
 
 function Book(title, author, pages, readStatus) {
     this.title = title;
@@ -11,22 +16,14 @@ function Book(title, author, pages, readStatus) {
     this.readStatus = readStatus;
 }
 
-const book1 = new Book("Dune", "Frank Herbert", 600, "read");
-const book2 = new Book("The Hobbit", "JRR Tolkien", 300, "read");
-const book3 = new Book("Do Androids Dream of Electric Sheep", "Philip K Dick", 250, "read");
-const book4 = new Book("The Dark Knight Returns", "Frank Miller", 120, "read");
-
-myLibrary.push(book1);
-myLibrary.push(book2);
-myLibrary.push(book3);
-myLibrary.push(book4);
-
 function addBookToLibrary(book) {
     myLibrary.push(book);
+    displayBooks();
 }
 
-function displayBooks(books) {
-    for (let book of books) {
+function displayBooks() {
+    cardsContainer.textContent = "";
+    for (let book of myLibrary) {
         createBookCard(book);
     }
 }
@@ -79,4 +76,8 @@ closeBtn.addEventListener("click", () => {
     dialog.close();
 });
 
-displayBooks(myLibrary);
+submitBtn.addEventListener("click", () => {
+    let read = readInput.checked ? "read" : "";
+    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, read);
+    addBookToLibrary(newBook);
+});
