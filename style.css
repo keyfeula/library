@@ -38,8 +38,12 @@ header {
     background: #ffffff;
 }
 
-.add-btn-container button:hover {
-    background: #f3f3f3;
+button:hover {
+    filter: brightness(0.9);
+}
+
+.add-book-btn:hover {
+    filter: brightness(0.7);
 }
 
 .cards-container {
@@ -79,10 +83,6 @@ header {
     border-radius: 0.5rem;
     padding: 1rem;
     border: none;
-}
-
-.card-btns button:hover {
-    background: #e7e7e7;
 }
 
 .add-btn-container {
@@ -131,8 +131,12 @@ form div {
     gap: 1rem;
 }
 
-form input {
-    
+button.read {
+    background: #11fb38;
+}
+
+button.not-read {
+    background: red;
 }
 
 form div:last-child {

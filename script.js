@@ -55,9 +55,11 @@ function createBookCard(book) {
 
     if (book.readStatus === "read") {
         readBtn.textContent = "Read";
+        readBtn.classList.add("read");
     }
     else {
         readBtn.textContent = "Not Read";
+        readBtn.classList.add("not-read");
     }
 
     deleteBtn.textContent = "Delete";
@@ -74,6 +76,26 @@ addBookBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", () => {
     dialog.close();
+});
+
+cardsContainer.addEventListener("click", (e) => {
+    let target = e.target;
+    
+    if (target.classList.contains("read-btn")) {
+        if (target.classList.contains("read")) {
+            target.classList.remove("read");
+            target.classList.add("not-read");
+            target.textContent = "Not Read";
+        }
+        else {
+            target.classList.remove("not-read");
+            target.classList.add("read");
+            target.textContent = "Read";
+        }
+    }
+    else if (target.classList.contains("delete-btn")) {
+        
+    }
 });
 
 submitBtn.addEventListener("click", () => {
