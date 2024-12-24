@@ -131,11 +131,11 @@ form div {
     gap: 1rem;
 }
 
-button.read {
+.card-btns .read-btn{
     background: #11fb38;
 }
 
-button.not-read {
+.card-btns .read-btn.not-read {
     background: red;
 }
 

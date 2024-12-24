@@ -14,18 +14,20 @@ function Book(title, author, pages, readStatus) {
     this.author = author;
     this.pages = pages;
     this.readStatus = readStatus;
+
+    this.toggleReadStatus = function() {
+        if (this.readStatus === "Read") {
+            this.readStatus = "Not Read";
+        }
+        else {
+            this.readStatus = "Read";
+        }
+    };
 }
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-    displayBooks();
-}
-
-function displayBooks() {
-    cardsContainer.textContent = "";
-    for (let book of myLibrary) {
-        createBookCard(book);
-    }
+    createBookCard(book);
 }
 
 function createBookCard(book) {
@@ -53,21 +55,30 @@ function createBookCard(book) {
     bookInfo.append(pagesText);
     card.append(bookInfo);
 
-    if (book.readStatus === "read") {
+    if (book.readStatus === "Not Read") {
         readBtn.textContent = "Read";
         readBtn.classList.add("read");
-    }
-    else {
-        readBtn.textContent = "Not Read";
-        readBtn.classList.add("not-read");
     }
 
     deleteBtn.textContent = "Delete";
     cardBtns.append(readBtn);
     cardBtns.append(deleteBtn);
     card.append(cardBtns);
+    card.setAttribute("id", myLibrary.length - 1);
 
     cardsContainer.append(card);
+
+    deleteBtn.addEventListener("click", () => {
+        deleteBtn.parentNode.parentNode.remove();
+        myLibrary.splice(myLibrary[card.getAttribute("id")], 1);
+    });
+
+    readBtn.addEventListener("click", () => {
+        let readStatus = myLibrary[card.getAttribute("id")].readStatus;
+        myLibrary[card.getAttribute("id")].toggleReadStatus();
+        readBtn.textContent = readStatus;
+        readBtn.classList.toggle("not-read");
+    });
 }
 
 addBookBtn.addEventListener("click", () => {
@@ -78,28 +89,8 @@ closeBtn.addEventListener("click", () => {
     dialog.close();
 });
 
-cardsContainer.addEventListener("click", (e) => {
-    let target = e.target;
-    
-    if (target.classList.contains("read-btn")) {
-        if (target.classList.contains("read")) {
-            target.classList.remove("read");
-            target.classList.add("not-read");
-            target.textContent = "Not Read";
-        }
-        else {
-            target.classList.remove("not-read");
-            target.classList.add("read");
-            target.textContent = "Read";
-        }
-    }
-    else if (target.classList.contains("delete-btn")) {
-        
-    }
-});
-
-submitBtn.addEventListener("click", () => {
-    let read = readInput.checked ? "read" : "";
-    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, read);
+submitBtn.addEventListener("click", (e) => {
+    let readStatus = readInput.checked ? "Read" : "Not Read";
+    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, readStatus);
     addBookToLibrary(newBook);
 });
