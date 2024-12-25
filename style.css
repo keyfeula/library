@@ -132,11 +132,11 @@ form div {
 }
 
 .card-btns .read-btn{
-    background: #11fb38;
+    background: #30ff52;
 }
 
 .card-btns .read-btn.not-read {
-    background: red;
+    background: #fd3c3c;
 }
 
 form div:last-child {

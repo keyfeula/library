@@ -56,8 +56,11 @@ function createBookCard(book) {
     card.append(bookInfo);
 
     if (book.readStatus === "Not Read") {
+        readBtn.textContent = "Not Read";
+        readBtn.classList.add("not-read");
+    }
+    else {
         readBtn.textContent = "Read";
-        readBtn.classList.add("read");
     }
 
     deleteBtn.textContent = "Delete";
@@ -68,15 +71,18 @@ function createBookCard(book) {
 
     cardsContainer.append(card);
 
-    deleteBtn.addEventListener("click", () => {
-        deleteBtn.parentNode.parentNode.remove();
-        myLibrary.splice(myLibrary[card.getAttribute("id")], 1);
+    deleteBtn.addEventListener("click", (e) => {
+        let bookIndex = e.target.parentNode.parentNode.getAttribute("id");
+        myLibrary.splice(bookIndex, 1);
+        cardsContainer.textContent = "";
+        for (let book of myLibrary) {
+            createBookCard(book);
+        }
     });
 
     readBtn.addEventListener("click", () => {
-        let readStatus = myLibrary[card.getAttribute("id")].readStatus;
         myLibrary[card.getAttribute("id")].toggleReadStatus();
-        readBtn.textContent = readStatus;
+        readBtn.textContent = myLibrary[card.getAttribute("id")].readStatus;
         readBtn.classList.toggle("not-read");
     });
 }
