@@ -85,6 +85,14 @@ button:hover {
     border: none;
 }
 
+.read-btn {
+    background: #ff4141;
+}
+
+.read-btn.read {
+    background: #55ff55;
+}
+
 .add-btn-container {
     display: flex;
     padding: 1rem;
@@ -129,14 +137,6 @@ form div {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-}
-
-.card-btns .read-btn{
-    background: #30ff52;
-}
-
-.card-btns .read-btn.not-read {
-    background: #fd3c3c;
 }
 
 form div:last-child {
