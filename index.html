@@ -19,21 +19,21 @@
         </main>
     </body>
     <dialog>
-        <form method="dialog">
+        <form>
             <div class="form-header">
                 <h2>Add new book</h2>
             </div>
             <div>
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title">
+                <label for="title">Title (required)</label>
+                <input type="text" id="title" name="title" required maxlength="25">
             </div>
             <div>
-                <label for="author">Author</label>
-                <input type="text" name="author" id="author">
+                <label for="author">Author (required)</label>
+                <input type="text" name="author" id="author" required maxlength="25">
             </div>
             <div>
-                <label for="pages">Pages</label>
-                <input type="number" name="pages" id="pages">
+                <label for="pages">Pages (required)</label>
+                <input type="number" name="pages" id="pages" required min="1" max="10000">
             </div>
             <div>
                 <label for="checkbox">Have you read it?</label>
@@ -41,7 +41,7 @@
             </div>
             <div class="buttons">
                 <button class="submit-btn">Submit</button>
-                <button class="close-btn">Close</button>
+                <button class="close-btn" type="button">Close</button>
             </div>
         </form>
     </dialog>

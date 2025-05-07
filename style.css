@@ -141,6 +141,17 @@ form div {
     gap: 1rem;
 }
 
+input:user-invalid {
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
+input:focus:user-invalid {
+    outline: none;
+    border: 2px solid red;
+    border-radius: 5px;
+}
+
 form div:last-child {
     justify-content: center;
 }

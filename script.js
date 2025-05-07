@@ -2,6 +2,7 @@ const myLibrary = [];
 const cardsContainer = document.querySelector(".cards-container");
 const mainContainer = document.querySelector(".main-container");
 const dialog = document.querySelector("dialog");
+const form = document.querySelector("form");
 const addBookBtn = document.querySelector(".add-book-btn");
 const closeBtn = document.querySelector(".close-btn");
 const submitBtn = document.querySelector(".submit-btn");
@@ -101,15 +102,23 @@ dialog.addEventListener("click", (event) => {
     }
 
     if (element.classList.contains("submit-btn")) {
-        const title = document.querySelector("input#title").value;
-        const author = document.querySelector("input#author").value;
-        const pages = document.querySelector("input#pages").value;
-        const read = document.querySelector("input#checkbox").checked ? "Read" : "Not Read";
-
-        addBookToLibrary(title, author, pages, read);
-        displayBooks();
+        if (form.checkValidity()) {
+            event.preventDefault();
+            let read;
+            if (readInput.checked) {
+                read = "Read";
+            }
+            else {
+                read = "Not Read";
+            }
+            addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, read);
+            displayBooks();
+            form.reset();
+            dialog.close();
+        }
     }
     else {
+        form.reset();
         dialog.close();
     }
 });
